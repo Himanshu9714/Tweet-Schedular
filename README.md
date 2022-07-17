@@ -1,1 +1,25 @@
 # Tweet-Schedular
+
+#### Create virtual environment
+<pre>python -m venv venv</pre>
+
+#### Install requirements
+<pre>pip install -r requirements.txt</pre>
+
+#### Create a project in Google Developers Console
+- Create a new project <br/>
+- Add Google Drive API and Google Sheets API <br/>
+- Download the credentials in JSON format <br/>
+- Copy the `gsheet_credenetials_dev.json` to `gsheet_credenetials.json` <br/>
+- Enter the credentials in gsheet_credenetials.json file <br/>
+- Copy client_email from credentials <br/>
+- Open the Google Sheets and find the `Share` option. Paste the email there and share<br/>
+- Copy the `.env_development` to `.env` and paste the google spreadsheet api key <br/>
+- You will find your key in `https://docs.google.com/spreadsheets/d/YOUR_KEY/edit#gid=0` your spreadhseet URL
+
+#### Set flask app to terminal
++ Windows: set FLASK_APP=app/main.py
++ MacOS: export FLASK_APP=app/main.py
+
+#### Run the server
+<pre>flask run</pre>
