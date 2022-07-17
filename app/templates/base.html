@@ -102,16 +102,39 @@
     <div class="container">
 
         <h1>Welcome to Tweet Scheduler</h1>
-        <!-- TODO: number of tweets -->
+        <h3>You have {{ n_open_tweets }} tweets scheduled.</h3>
 
         <div id="form-container">
             <div id="form-wrapper">
-                <!-- TODO: form -->
+                <form action="/tweet" id="form" method="post">
+                    <div class="flex:6">
+                        <input type="text" id="title" class="form-control" name="message" placeholder="Add Message">
+                        <input type="datetime" id="time" class="form-control" name="time"
+                            placeholder="Add Time (YYYY-MM-DD hh:mm:ss)">
+                        <input type="password" id="password" class="form-control" name="password"
+                            placeholder="Enter Password">
+                        <input type="submit" id="submit" class="form-control" name="message" placeholder="Add Message"
+                            value="Add Tweet">
+                    </div>
+                </form>
             </div>
         </div>
 
         <div id="task-container">
-            <!-- TODO: list of tweets -->
+            <ul>
+                {% for tweet in tweets %}
+                <li>
+                    {% if tweet.done %}
+                    <strike>
+                        {% endif %}
+                        {{tweet.time}}: {{tweet.message}}
+                </li>
+                {% if tweet.done %}
+                </strike>
+                {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
         </div>
 </body>
 
