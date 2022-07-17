@@ -128,10 +128,10 @@
                     <strike>
                         {% endif %}
                         {{tweet.time}}: {{tweet.message}}
-                </li>
-                {% if tweet.done %}
-                </strike>
-                {% endif %}
+                        {% if tweet.done %}
+                    </strike>
+                    {% endif %}
+                    <a href="/delete/{{tweet.row_idx}}" id="delete">Delete</a>
                 </li>
                 {% endfor %}
             </ul>

@@ -1,8 +1,9 @@
-from flask import Flask, redirect, render_template, request
-import gspread
-from dotenv import load_dotenv
 import os
 from datetime import datetime, timedelta
+
+import gspread
+from dotenv import load_dotenv
+from flask import Flask, redirect, render_template, request
 
 load_dotenv()
 
@@ -35,6 +36,7 @@ def tweet_list():
         tweet = Tweet(**tweet, row_idx=idx)
         tweets.append(tweet)
 
+    tweets.reverse()
     n_open_tweets = sum(1 for tweet in tweets if not tweet.done)
     return render_template('base.html', tweets=tweets, n_open_tweets=n_open_tweets)
 
@@ -78,4 +80,10 @@ def add_tweet():
     tweet = [str(date_time_obj), message, 0]
     worksheet.append_row(tweet)
 
+    return redirect('/')
+
+
+@app.route("/delete/<int:row_idx>")
+def delete_tweet(row_idx):
+    worksheet.delete_rows(row_idx)
     return redirect('/')
