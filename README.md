@@ -33,3 +33,7 @@
 - Open new terminal
 - Go to project root directory and run below command
 <pre>python tweet.py</pre>
+
+
+#### Note
+If you deploy your app to heroku, please don't push the `gsheet_credentials.json` and `.env` file, you have to setup the environment variables from the heroku dashboard.
